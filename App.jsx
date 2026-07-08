@@ -934,3 +934,5 @@ function RefTab() {
     </div>
   );
 }
+export default App;
+
