@@ -5,7 +5,7 @@ window.onerror = function(msg, url, line) {
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-⁠import LandingPage from './LandingPage.jsx'
+import LandingPage from './LandingPage.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <LandingPage/>
