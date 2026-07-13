@@ -2,163 +2,44 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function LandingPage() {
-  // Animation variants for buttery-smooth Apple-style reveals
-  const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[#06090f] text-white font-sans selection:bg-orange-500 selection:text-white overflow-x-hidden">
+    <div className="relative min-h-screen bg-slate-950 text-slate-50 overflow-hidden font-sans flex flex-col justify-center items-center">
       
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 bg-[#06090f]/80 backdrop-blur-md border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="font-bold text-xl tracking-tight text-white">HSE <span className="text-orange-500">Fieldbook</span></div>
-          <button onClick={() => window.location.reload()} className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all">
-            Launch App
-          </button>
-        </div>
-      </nav>
+      {/* 1. THE 3D CANVAS PLACEHOLDER */}
+      {/* We will install react-three-fiber and drop the 3D HSE gear in here later */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40">
+        {/* The 3D model will sit perfectly behind the text */}
+      </div>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between min-h-screen">
-        <motion.div 
-          className="md:w-1/2 z-10"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
+      {/* 2. THE CINEMATIC TEXT & FOREGROUND */}
+      <div className="z-10 text-center px-6">
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-5xl md:text-7xl font-black tracking-tight mb-6"
         >
-          <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6">
-            Safety doesn't wait for <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">spreadsheets.</span>
-          </motion.h1>
-          <motion.p variants={fadeUp} className="text-lg md:text-xl text-gray-400 mb-8 max-w-lg">
-            The definitive mobile calculator and cross-reference engine for modern field officers. Calculate TRCF, track man-hours, and verify Nigerian compliance instantly.
-          </motion.p>
-          <motion.div variants={fadeUp} className="flex gap-4">
-            <button className="bg-white text-[#06090f] px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-all">
-              See Features
-            </button>
-          </motion.div>
-        </motion.div>
-
-        {/* Hero 3D Mockup */}
-        <motion.div 
-          className="md:w-1/2 mt-16 md:mt-0 relative"
-          initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          HSE <span className="text-orange-500">Fieldbook</span>
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="text-lg md:text-xl text-slate-400 font-light max-w-2xl mx-auto mb-10"
         >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-red-500/20 blur-[100px] rounded-full"></div>
-          <img 
-            src="hero-matrix.png.png" 
-            alt="HSE Risk Matrix App View" 
-            className="relative z-10 w-full max-w-md mx-auto drop-shadow-2xl"
-          />
-        </motion.div>
-      </section>
-
-      {/* Feature 1: The Calculator */}
-      <section className="py-24 px-6 bg-gradient-to-b from-[#06090f] to-[#0a0f18]">
-        <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-16">
-          <motion.div 
-            className="md:w-1/2 relative"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUp}
-          >
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-orange-500/10 blur-[100px] rounded-full"></div>
-            <img 
-              src="stats-calc.png.png" 
-              alt="HSE Calculator View" 
-              className="relative z-10 w-full max-w-lg mx-auto drop-shadow-2xl"
-            />
-          </motion.div>
-          
-          <motion.div 
-            className="md:w-1/2"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold mb-6">Ditch the manual math.</motion.h2>
-            <motion.p variants={fadeUp} className="text-gray-400 text-lg mb-6">
-              Built for the reality of the field. Compute Total Man-Hours, LTIF, and incident rates instantly with intuitive, glove-friendly slider controls.
-            </motion.p>
-            <motion.ul variants={fadeUp} className="space-y-4 text-gray-300">
-              <li className="flex items-center gap-3"><span className="text-orange-500">✓</span> Instant TRCF/LTIF computing</li>
-              <li className="flex items-center gap-3"><span className="text-orange-500">✓</span> Zero latency, offline capable</li>
-              <li className="flex items-center gap-3"><span className="text-orange-500">✓</span> Error-free metrics under pressure</li>
-            </motion.ul>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Feature 2: Compliance Reference */}
-      <section className="py-24 px-6 bg-[#06090f]">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
-          <motion.div 
-            className="md:w-1/2"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold mb-6">Always compliant. Always ready.</motion.h2>
-            <motion.p variants={fadeUp} className="text-gray-400 text-lg mb-6">
-              Your pocket reference guide. Instantly pull up oxygen level limits for confined spaces, fire classifications, and the Factories Act 1990 during any toolbox talk or spot audit.
-            </motion.p>
-            <motion.ul variants={fadeUp} className="space-y-4 text-gray-300">
-              <li className="flex items-center gap-3"><span className="text-green-500">✓</span> 1990 Factories Act quick-lookup</li>
-              <li className="flex items-center gap-3"><span className="text-green-500">✓</span> Confined space atmospheric metrics</li>
-              <li className="flex items-center gap-3"><span className="text-green-500">✓</span> Immediate CPR & emergency protocols</li>
-            </motion.ul>
-          </motion.div>
-
-          <motion.div 
-            className="md:w-1/2 relative"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUp}
-          >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-green-500/10 blur-[100px] rounded-full"></div>
-            <img 
-              src="space-ref.png.png" 
-              alt="HSE Compliance Reference" 
-              className="relative z-10 w-full max-w-md mx-auto drop-shadow-2xl"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Footer CTA */}
-      <section className="py-32 px-6 border-t border-gray-800 bg-gradient-to-b from-[#06090f] to-black text-center">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="max-w-3xl mx-auto"
+          The definitive safety engine. Compute TRCF, track man-hours, and verify compliance instantly.
+        </motion.p>
+        
+        <motion.button 
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-orange-500 hover:bg-orange-600 text-slate-950 px-10 py-4 rounded-full font-bold uppercase tracking-widest shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-all"
         >
-          <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl font-bold mb-8">Elevate your safety culture.</motion.h2>
-          <motion.button className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-full text-lg font-bold transition-all shadow-[0_0_40px_rgba(249,115,22,0.3)]">
-            Open the Fieldbook Now
-          </motion.button>
-        </motion.div>
-      </section>
+          Launch App
+        </motion.button>
+      </div>
 
     </div>
   );
 }
-⁠
